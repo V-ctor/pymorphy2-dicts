@@ -17,6 +17,13 @@ Options:
     --min-paradigm-popularity <NUM>   Prediction: min. number of lexemes for the paradigm [default: 3]
     --max-suffix-length <NUM>         Prediction: max. length of prediction suffixes [default: 5]
     --min-word-freq <NUM>             P(tag|word) estimation: min. word count in source corpus [default: 1]
+    --links-matching <matching.xml>   matching.xml format is
+                                        <allowed_link_types>
+                                            <link_type id="1"/> all connections with link type id 1 is allowed
+                                            <link_type id="21">
+                                                <link id="268160"/>  for link type connection 21 only link 268160 is allowed
+                                            </link_type>
+                                        </allowed_link_types>
 
 Please note that it is can be resource-heavy, e.g. processing of
 opencorpora.org Russian dictionary requires 3GB+ free RAM and 1GB+
@@ -36,7 +43,6 @@ import pymorphy2.lang
 from pymorphy2 import opencorpora_dict
 from pymorphy2.opencorpora_dict.probability import add_conditional_tag_probability
 from pymorphy2.opencorpora_dict.storage import update_meta
-
 
 logger = logging.getLogger('pymorphy2')
 
@@ -96,6 +102,7 @@ if __name__ == '__main__':
         source_name=args['--source-name'],
         language_code=args['--lang'],
         compile_options=compile_options,
+        links_matching_path=args['--links-matching']
     )
 
     if args["--corpus"]:
