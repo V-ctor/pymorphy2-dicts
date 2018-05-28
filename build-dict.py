@@ -19,7 +19,7 @@ Options:
     --min-word-freq <NUM>             P(tag|word) estimation: min. word count in source corpus [default: 1]
     --links-matching <matching.xml>   matching.xml format is
                                         <allowed_link_types>
-                                            <link_type id="1"/> all connections with link type id 1 is allowed
+                                            <link_type id="1"/> all connections with link type id 1 are allowed
                                             <link_type id="21">
                                                 <link id="268160"/>  for link type connection 21 only link 268160 is allowed
                                             </link_type>
